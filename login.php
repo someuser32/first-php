@@ -18,25 +18,13 @@
 		<div id="Body">
 			<div class="Container">
 				<div class="Row">
-					<table class="LoginContainer">
-						<tbody>
-							<tr class="Username">
-								<td>Username:</td>
-								<td><input name="username" type="text"></td>
-							</tr>
-							<tr class="Password">
-								<td>Password:</td>
-								<td><input name="password" type="password"></td>
-							</tr>
-							<tr class="Submit">
-								<td></td>
-								<td>
-									<label><input name="save" type="checkbox">Save password?</label>
-									<button class="right" onclick="Login(document.getElementsByName('username')[0].value, document.getElementsByName('password')[0].value)">Login</button>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<?php
+						if (array_key_exists("registration", $_GET) && $_GET["registration"] == 1) {
+							include("templates/widgets/register.php");
+						} else {
+							include("templates/widgets/login.php");
+						};
+					?>
 				</div>
 			</div>
 		</div>

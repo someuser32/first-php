@@ -13,3 +13,24 @@ function Login(username, password) {
 		};
 	}, "json");
 };
+
+/**
+ * @param {string} username
+ * @param {string} email
+ * @param {string} password
+ * @param {string} captcha
+ * @returns {void}
+ */
+function Register(username, email, password, captcha) {
+	$.post("/api/login.php", {
+		"username": username,
+		"email": email,
+		"password": password,
+		"captcha": captcha,
+		"is_registration": 1,
+	}, function (data, textStatus, jqXHR) {
+		if (data["message"] != undefined) {
+			alert(data["message"]);
+		};
+	}, "json");
+};
