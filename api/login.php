@@ -1,5 +1,5 @@
 <?php
-	require("config.php");
+	require("internal/config.php");
 
 	function login($username, $password) {
 		$client = new MongoDB\Client(MONGODB_CONNECTION);
@@ -24,27 +24,42 @@
 		$default_params = array("username", "password");
 
 		if (count(array_intersect_key(array_flip($default_params), $_POST)) != count($default_params)) {
-			echo "bad request!";
+			echo json_encode(array(
+				"result" => LoginResults::BadRequest,
+				"message" => "Invalid arguments! Expected: ".join(", ", $default_params),
+			));
 			return null;
 		};
 
 		$user = login($_POST["username"], $_POST["password"]);
 
 		if (is_null($user)) {
-			echo "username does not exists";
+			echo json_encode(array(
+				"result" => LoginResults::NotExists,
+				"message" => "User ".$_POST["username"]." does not exists!",
+			));
 			return false;
 		} else if (is_bool($user) && $user == false) {
-			echo "incorrect password!";
+			echo json_encode(array(
+				"result" => LoginResults::IncorrectPassword,
+				"message" => "Incorrect password!",
+			));
 			return false;
 		};
 
-		echo "logged in!";
+		echo json_encode(array(
+			"result" => LoginResults::Success,
+			"message" => "Logged in!",
+		));
 		return true;
 	};
 
 
 	if (array_key_exists("is_registration", $_POST) && $_POST["is_registration"] == 1) {
-		echo "not implemented yet!";
+		echo json_encode(array(
+			"result" => BaseResults::NotImplemented,
+			"message" => "Not implemented yet!",
+		));
 		return;
 	};
 
