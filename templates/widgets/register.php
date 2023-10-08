@@ -20,10 +20,14 @@
 						<a>Captcha:</a>
 						<img src="<?php
 							require("internal/config.php");
+
 							use Gregwar\Captcha\CaptchaBuilder;
 							$builder = new CaptchaBuilder;
-							$builder->build(100, 20);
+							$builder->build(100, 25);
+
+							session_start();
 							$_SESSION["captcha_registration_answer"] = $builder->getPhrase();
+
 							echo $builder->inline();
 						?>" alt="captcha">
 					</td>

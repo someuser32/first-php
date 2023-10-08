@@ -4,6 +4,9 @@
  * @returns {void}
  */
 function Login(username, password) {
+	if (username == "" || password == "") {
+		return;
+	};
 	$.post("/api/login.php", {
 		"username": username,
 		"password": password,
@@ -22,6 +25,9 @@ function Login(username, password) {
  * @returns {void}
  */
 function Register(username, email, password, captcha) {
+	if (username == "" || email == "" || password == "" || captcha == "") {
+		return;
+	};
 	$.post("/api/login.php", {
 		"username": username,
 		"email": email,
@@ -29,7 +35,6 @@ function Register(username, email, password, captcha) {
 		"captcha": captcha,
 		"is_registration": 1,
 	}, function (data, textStatus, jqXHR) {
-		console.log(data)
 		if (data["message"] != undefined) {
 			alert(data["message"]);
 		};

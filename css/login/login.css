@@ -8,6 +8,10 @@
 	justify-content: space-between;
 }
 
+.LoginContainer tbody tr td, .RegisterContainer tbody tr td img {
+	vertical-align: middle;
+}
+
 .LoginContainer tbody tr.Submit td label {
 	font-size: 13px;
 }
