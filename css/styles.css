@@ -38,3 +38,15 @@ body {
 	align-items: center;
 	justify-content: space-between;
 }
+
+table tbody tr td.left {
+	text-align: center;
+}
+
+table tbody tr td.center {
+	text-align: center;
+}
+
+table tbody tr td.right {
+	text-align: right;
+}
