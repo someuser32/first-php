@@ -16,7 +16,17 @@
 					<td><input name="password" type="password"></td>
 				</tr>
 				<tr class="Captcha">
-					<td>Captcha:</td>
+					<td>
+						<a>Captcha:</a>
+						<img src="<?php
+							require("internal/config.php");
+							use Gregwar\Captcha\CaptchaBuilder;
+							$builder = new CaptchaBuilder;
+							$builder->build(100, 20);
+							$_SESSION["captcha_registration_answer"] = $builder->getPhrase();
+							echo $builder->inline();
+						?>" alt="captcha">
+					</td>
 					<td><input name="captcha" type="text"></td>
 				</tr>
 				<tr class="Submit">

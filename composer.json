@@ -1,6 +1,7 @@
 {
     "require": {
         "mongodb/mongodb": "^1.16",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "gregwar/captcha": "^1.2"
     }
 }

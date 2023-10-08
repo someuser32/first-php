@@ -29,6 +29,7 @@ function Register(username, email, password, captcha) {
 		"captcha": captcha,
 		"is_registration": 1,
 	}, function (data, textStatus, jqXHR) {
+		console.log(data)
 		if (data["message"] != undefined) {
 			alert(data["message"]);
 		};
